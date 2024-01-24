@@ -1,0 +1,28 @@
+body{
+background-color: gray;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+}
+
+
+.options{
+    display: grid;
+}
+
+
+.Rotar1{
+ display: grid;
+ /* grid-template-columns: ; */
+}
+
+.Rotar2{
+
+}
+
+.Rotar3{
+
+}
+
