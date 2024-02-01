@@ -17,6 +17,7 @@ export class Enigma {
   }
 
   encryptLetter(letter) {
+    letter = this.plugboard.process(letter);
     this.rotors[this.selectedRotars[0]].rotate();
     letter = this.rotors[this.selectedRotars[0]].encrypt(letter);
     if (this.rotors[this.selectedRotars[0]].checkIfNextRotate()) {
@@ -42,5 +43,8 @@ export class Enigma {
   }
   getRotars() {
     return this.rotors;
+  }
+  getPlugboard() {
+    return this.plugboard;
   }
 }

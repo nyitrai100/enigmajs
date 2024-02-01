@@ -173,3 +173,58 @@ rotarIII.addEventListener("change", () => {
   rotorIIIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].getPosition();
   rotorIIINotch.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].getNotch();
 });
+
+//PLUG SETTINGS
+var currentPlugs = document.getElementById("CurentPlugs");
+enigmaMachine.getPlugboard().plug("A", "M");
+enigmaMachine.getPlugboard().plug("V", "T");
+enigmaMachine.getPlugboard().plug("P", "L");
+
+function DisplayPlugs() {
+  currentPlugs.innerHTML = "";
+  setTimeout(() => {
+    const plugs = enigmaMachine.getPlugboard().getPlugs();
+    // display the current plugs
+    for (const [letter1, letter2] of Object.entries(plugs)) {
+      const plugElement = document.createElement("div");
+      plugElement.textContent = `${letter1} - ${letter2}`;
+      currentPlugs.appendChild(plugElement);
+
+      // Create a button for unplugging
+      const unplugButton = document.createElement("button");
+      unplugButton.textContent = "Unplug";
+      unplugButton.addEventListener(
+        "click",
+        ((l1, l2) => {
+          return () => {
+            // Call the unplug function when the button is clicked
+            enigmaMachine.getPlugboard().unplug(l1, l2);
+            DisplayPlugs();
+            console.log(enigmaMachine.getPlugboard().getPlugs());
+          };
+        })(letter1, letter2)
+      );
+      currentPlugs.appendChild(unplugButton);
+    }
+  }, 1);
+}
+DisplayPlugs();
+
+const addPlugButton = document.getElementById("addPlug");
+
+addPlugButton.addEventListener("click", () => {
+  var letter1 = document.getElementById("plug1").value;
+  var letter2 = document.getElementById("plug2").value;
+  letter1 = letter1.toUpperCase();
+  letter2 = letter2.toUpperCase();
+  if (letter1 == letter2) {
+    alert("Cannot plug a letter to itself");
+    return;
+  }
+  if (enigmaMachine.getPlugboard().isPlugged(letter1) || enigmaMachine.getPlugboard().isPlugged(letter2)) {
+    alert("Cannot plug a letter that is already plugged");
+    return;
+  }
+  enigmaMachine.getPlugboard().plug(letter1[0], letter2[0]);
+  DisplayPlugs();
+});
