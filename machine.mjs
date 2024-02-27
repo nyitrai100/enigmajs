@@ -2,14 +2,14 @@ import { Enigma } from "./enigma.mjs";
 
 const enigmaMachine = new Enigma();
 //Get all HTML elements
-var rotorIPos = document.getElementById("RotarIPos");
-var rotorINotch = document.getElementById("RotarINotch");
+var rotorIPos = document.getElementById("RotorIPos");
+var rotorINotch = document.getElementById("RotorINotch");
 
-var rotorIIPos = document.getElementById("RotarIIPos");
-var rotorIINotch = document.getElementById("RotarIINotch");
+var rotorIIPos = document.getElementById("RotorIIPos");
+var rotorIINotch = document.getElementById("RotorIINotch");
 
-var rotorIIIPos = document.getElementById("RotarIIIPos");
-var rotorIIINotch = document.getElementById("RotarIIINotch");
+var rotorIIIPos = document.getElementById("RotorIIIPos");
+var rotorIIINotch = document.getElementById("RotorIIINotch");
 
 document.addEventListener("DOMContentLoaded", function () {
   // Loop to create options from 0 to 25
@@ -98,68 +98,68 @@ btn.addEventListener("click", (event) => {
 });
 //updating the UI and backend on settings change
 rotorIPos.addEventListener("change", (event) => {
-  enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].setPosition(Number(rotorIPos.value));
-  console.log(enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getPosition());
+  enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[0]].setPosition(Number(rotorIPos.value));
+  console.log(enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[0]].getPosition());
 });
 
 rotorINotch.addEventListener("change", (event) => {
-  enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].setNotch(Number(rotorINotch.value));
+  enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[0]].setNotch(Number(rotorINotch.value));
 });
 
 rotorIIPos.addEventListener("change", (event) => {
-  enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[1]].setPosition(Number(rotorIIPos.value));
+  enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[1]].setPosition(Number(rotorIIPos.value));
 });
 
 rotorIINotch.addEventListener("change", (event) => {
-  enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[1]].setNotch(Number(rotorIINotch.value));
+  enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[1]].setNotch(Number(rotorIINotch.value));
 });
 
 rotorIIIPos.addEventListener("change", (event) => {
-  enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].setPosition(Number(rotorIIIPos.value));
+  enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[2]].setPosition(Number(rotorIIIPos.value));
 });
 
 rotorIIINotch.addEventListener("change", (event) => {
-  enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].setNotch(Number(rotorIIINotch.value));
+  enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[2]].setNotch(Number(rotorIIINotch.value));
 });
 
 //updating all UI settings
 function setAllSettings() {
-  rotorIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getPosition();
-  rotorINotch.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getNotch();
+  rotorIPos.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[0]].getPosition();
+  rotorINotch.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[0]].getNotch();
 
-  rotorIIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[1]].getPosition();
-  rotorIINotch.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[1]].getNotch();
+  rotorIIPos.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[1]].getPosition();
+  rotorIINotch.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[1]].getNotch();
 
-  rotorIIIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].getPosition();
-  rotorIIINotch.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].getNotch();
+  rotorIIIPos.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[2]].getPosition();
+  rotorIIINotch.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[2]].getNotch();
 }
 
-//SET ROTAR OPTIONS
-var rotarI = document.getElementById("RotarI");
-var rotarII = document.getElementById("RotarII");
-var rotarIII = document.getElementById("RotarIII");
+//SET ROTOR OPTIONS
+var rotorI = document.getElementById("rotorI");
+var rotorII = document.getElementById("rotorII");
+var rotorIII = document.getElementById("rotorIII");
 
 function init() {
-  rotarI.value = enigmaMachine.getSelectedRotars()[0];
-  rotarII.value = enigmaMachine.getSelectedRotars()[1];
-  rotarIII.value = enigmaMachine.getSelectedRotars()[2];
+  rotorI.value = enigmaMachine.getSelectedRotors()[0];
+  rotorII.value = enigmaMachine.getSelectedRotors()[1];
+  rotorIII.value = enigmaMachine.getSelectedRotors()[2];
 }
 init();
-//updating rotars on change
-rotarI.addEventListener("change", () => {
-  enigmaMachine.setSelectedRotars(0, Number(rotarI.value));
-  rotorIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getPosition();
-  rotorINotch.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getNotch();
+//updating rotors on change
+rotorI.addEventListener("change", () => {
+  enigmaMachine.setSelectedRotors(0, Number(rotorI.value));
+  rotorIPos.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[0]].getPosition();
+  rotorINotch.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[0]].getNotch();
 });
-rotarII.addEventListener("change", () => {
-  enigmaMachine.setSelectedRotars(1, Number(rotarII.value));
-  rotorIIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[1]].getPosition();
-  rotorIINotch.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[1]].getNotch();
+rotorII.addEventListener("change", () => {
+  enigmaMachine.setSelectedRotors(1, Number(rotorII.value));
+  rotorIIPos.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[1]].getPosition();
+  rotorIINotch.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[1]].getNotch();
 });
-rotarIII.addEventListener("change", () => {
-  enigmaMachine.setSelectedRotars(2, Number(rotarIII.value));
-  rotorIIIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].getPosition();
-  rotorIIINotch.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].getNotch();
+rotorIII.addEventListener("change", () => {
+  enigmaMachine.setSelectedRotors(2, Number(rotorIII.value));
+  rotorIIIPos.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[2]].getPosition();
+  rotorIIINotch.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[2]].getNotch();
 });
 
 //PLUG SETTINGS

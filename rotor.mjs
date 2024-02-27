@@ -1,4 +1,4 @@
-export class Rotor {
+export class rotor {
   //set the wiring, notch and position of the rotor
   constructor(wiring, notch, position) {
     this.wiring = wiring;

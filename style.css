@@ -20,21 +20,21 @@ overflow-x: hidden;
 }
 
 
-.Rotar1{
+.Rotor1{
  display: grid;
  grid-column-start: 1;
  grid-template-columns: 1;
  justify-content: center;
 }
 
-.Rotar2{
+.Rotor2{
     display: grid;
     grid-column-start: 2;
     grid-template-columns: 2;
     justify-content: center;
 }
 
-.Rotar3{
+.Rotor3{
     display: grid;
     grid-column-start: 3;
     grid-template-columns: 3;
