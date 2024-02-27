@@ -1,7 +1,7 @@
 import { Enigma } from "./enigma.mjs";
 
 const enigmaMachine = new Enigma();
-// Get the select element
+//Get all HTML elements
 var rotorIPos = document.getElementById("RotarIPos");
 var rotorINotch = document.getElementById("RotarINotch");
 
@@ -14,10 +14,7 @@ var rotorIIINotch = document.getElementById("RotarIIINotch");
 document.addEventListener("DOMContentLoaded", function () {
   // Loop to create options from 0 to 25
   for (var i = 0; i <= 25; i++) {
-    // Create an option element
     var rotorIPosOption = document.createElement("option");
-
-    // Set the value and text content of the option
     rotorIPosOption.value = i;
     rotorIPosOption.textContent = i;
 
@@ -26,10 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     rotorIPos.value = enigmaMachine.rotorI.getPosition();
   }
   for (var i = 0; i <= 25; i++) {
-    // Create an option element
     var rotorINotchOption = document.createElement("option");
-
-    // Set the value and text content of the option
     rotorINotchOption.value = i;
     rotorINotchOption.textContent = i;
 
@@ -38,12 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
     rotorINotch.value = enigmaMachine.rotorI.getNotch();
   }
 
-  // Loop to create options from 0 to 25
   for (var i = 0; i <= 25; i++) {
-    // Create an option element
     var rotorIIPosOption = document.createElement("option");
-
-    // Set the value and text content of the option
     rotorIIPosOption.value = i;
     rotorIIPosOption.textContent = i;
 
@@ -52,10 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
     rotorIIPos.value = enigmaMachine.rotorII.getPosition();
   }
   for (var i = 0; i <= 25; i++) {
-    // Create an option element
     var rotorIINotchOption = document.createElement("option");
 
-    // Set the value and text content of the option
     rotorIINotchOption.value = i;
     rotorIINotchOption.textContent = i;
 
@@ -64,12 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
     rotorIINotch.value = enigmaMachine.rotorII.getNotch();
   }
 
-  // Loop to create options from 0 to 25
   for (var i = 0; i <= 25; i++) {
-    // Create an option element
     var rotorIIIPosOption = document.createElement("option");
 
-    // Set the value and text content of the option
     rotorIIIPosOption.value = i;
     rotorIIIPosOption.textContent = i;
 
@@ -78,10 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
     rotorIIIPos.value = enigmaMachine.rotorIII.getPosition();
   }
   for (var i = 0; i <= 25; i++) {
-    // Create an option element
     var rotorIIINotchOption = document.createElement("option");
 
-    // Set the value and text content of the option
     rotorIIINotchOption.value = i;
     rotorIIINotchOption.textContent = i;
 
@@ -96,9 +79,11 @@ var input = document.querySelector("#input");
 var output = document.querySelector("#output");
 var outputText = "";
 
+//encypt the input
 btn.addEventListener("click", (event) => {
   output.innerHTML = "";
   outputText = "";
+  //getting rid of spaces and making the input uppercase
   var withoutSpaces = input.value.replace(/\s+/g, "");
   withoutSpaces = withoutSpaces.toUpperCase();
   for (let i = 0; i < withoutSpaces.length; i++) {
@@ -111,7 +96,7 @@ btn.addEventListener("click", (event) => {
   output.innerHTML = outputText;
   setAllSettings();
 });
-
+//updating the UI and backend on settings change
 rotorIPos.addEventListener("change", (event) => {
   enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].setPosition(Number(rotorIPos.value));
   console.log(enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getPosition());
@@ -137,6 +122,7 @@ rotorIIINotch.addEventListener("change", (event) => {
   enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].setNotch(Number(rotorIIINotch.value));
 });
 
+//updating all UI settings
 function setAllSettings() {
   rotorIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getPosition();
   rotorINotch.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getNotch();
@@ -159,7 +145,7 @@ function init() {
   rotarIII.value = enigmaMachine.getSelectedRotars()[2];
 }
 init();
-
+//updating rotars on change
 rotarI.addEventListener("change", () => {
   enigmaMachine.setSelectedRotars(0, Number(rotarI.value));
   rotorIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getPosition();
@@ -186,20 +172,18 @@ function DisplayPlugs() {
   currentPlugs.innerHTML = "";
   setTimeout(() => {
     const plugs = enigmaMachine.getPlugboard().getPlugs();
-    // display the current plugs
+    // display the plugs
     for (const [letter1, letter2] of Object.entries(plugs)) {
       const plugElement = document.createElement("div");
       plugElement.textContent = `${letter1} - ${letter2}`;
       currentPlugs.appendChild(plugElement);
-
-      // Create a button for unplugging
       const unplugButton = document.createElement("button");
       unplugButton.textContent = "Unplug";
       unplugButton.addEventListener(
         "click",
         ((l1, l2) => {
           return () => {
-            // Call the unplug function when the button is clicked
+            //uplug the letter
             enigmaMachine.getPlugboard().unplug(l1, l2);
             DisplayPlugs();
             console.log(enigmaMachine.getPlugboard().getPlugs());
@@ -214,6 +198,7 @@ DisplayPlugs();
 
 const addPlugButton = document.getElementById("addPlug");
 
+//add a plug
 addPlugButton.addEventListener("click", () => {
   var letter1 = document.getElementById("plug1").value;
   var letter2 = document.getElementById("plug2").value;

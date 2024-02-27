@@ -3,6 +3,7 @@ import { Reflector } from "./reflector.mjs";
 import { PlugBoard } from "./plugboard.mjs";
 
 export class Enigma {
+  //set the rotors and reflector
   constructor() {
     this.rotorI = new Rotor([4, 10, 12, 5, 11, 6, 3, 16, 21, 25, 13, 19, 14, 22, 24, 7, 23, 20, 18, 15, 0, 8, 1, 17, 2, 9], 16, 15);
     this.rotorII = new Rotor([23, 3, 14, 8, 22, 5, 10, 19, 11, 0, 13, 6, 24, 20, 7, 1, 18, 21, 9, 2, 4, 15, 16, 25, 12, 17], 20, 7);
@@ -15,7 +16,7 @@ export class Enigma {
     this.rotors = [this.rotorI, this.rotorII, this.rotorIII, this.rotorIV, this.rotorV];
     this.selectedRotars = [0, 1, 2];
   }
-
+  //encrypt the letter
   encryptLetter(letter) {
     letter = this.plugboard.process(letter);
     this.rotors[this.selectedRotars[0]].rotate();
