@@ -105,6 +105,9 @@ btn.addEventListener("click", (event) => {
     const currentLetter = withoutSpaces[i];
     outputText += enigmaMachine.encryptLetter(currentLetter);
   }
+  for (let i = 0; i < outputText.length; i += 30) {
+    outputText = outputText.substring(0, i) + " " + outputText.substring(i);
+  }
   output.innerHTML = outputText;
   setAllSettings();
 });
