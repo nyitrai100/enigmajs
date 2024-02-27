@@ -134,7 +134,6 @@ rotorIIINotch.addEventListener("change", (event) => {
   enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[2]].setNotch(Number(rotorIIINotch.value));
 });
 
-//CHANGE THISSS==================================
 function setAllSettings() {
   rotorIPos.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getPosition();
   rotorINotch.value = enigmaMachine.getRotars()[enigmaMachine.getSelectedRotars()[0]].getNotch();
