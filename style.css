@@ -75,3 +75,15 @@ overflow-x: hidden;
     align-items: center;
     margin-top:150px
 }
+
+.plugBoardContainer{
+    background-color: rgb(126, 123, 123);
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+}
+
+.plugBoardTitle{
+    display: flex;
+    justify-content: center;
+}
