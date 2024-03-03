@@ -138,11 +138,14 @@ function setAllSettings() {
 var rotorI = document.getElementById("rotorI");
 var rotorII = document.getElementById("rotorII");
 var rotorIII = document.getElementById("rotorIII");
+//SET REFLECTOR OPTIONS
+var reflector = document.getElementById("reflector");
 
 function init() {
   rotorI.value = enigmaMachine.getSelectedRotors()[0];
   rotorII.value = enigmaMachine.getSelectedRotors()[1];
   rotorIII.value = enigmaMachine.getSelectedRotors()[2];
+  reflector.value = enigmaMachine.getSelectedReflector();
 }
 init();
 //updating rotors on change
@@ -214,4 +217,9 @@ addPlugButton.addEventListener("click", () => {
   }
   enigmaMachine.getPlugboard().plug(letter1[0], letter2[0]);
   DisplayPlugs();
+});
+
+//SET REFLECTOR
+reflector.addEventListener("change", () => {
+  enigmaMachine.setSelectedRotors(reflector.value);
 });
