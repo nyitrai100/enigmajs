@@ -94,5 +94,14 @@ overflow-x: hidden;
 }
 .outputDiv{
     /* background-color: red; */
+    margin:55px;
+
+    
+}
+
+.divReflector{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
 }
 
