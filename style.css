@@ -56,7 +56,12 @@ overflow-x: hidden;
     grid-column-start: 2;
     grid-template-columns: 2;
 }
-
+.submitGrid2{
+    display: grid;
+    grid-row-start: 5;
+    grid-column-start: 2;
+    grid-template-columns: 2;
+}
 #output{
     display: grid;
     justify-content: center;

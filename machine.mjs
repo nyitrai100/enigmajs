@@ -74,27 +74,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-var btn = document.querySelector("#submit");
+var Encrypt = document.querySelector("#Encrypt");
+var Decrypt = document.querySelector("#Decrypt");
+
 var input = document.querySelector("#input");
 var output = document.querySelector("#output");
 var outputText = "";
 
 //encypt the input
-btn.addEventListener("click", (event) => {
-  output.innerHTML = "";
-  outputText = "";
-  //getting rid of spaces and making the input uppercase
-  var withoutSpaces = input.value.replace(/\s+/g, "");
-  withoutSpaces = withoutSpaces.toUpperCase();
-  for (let i = 0; i < withoutSpaces.length; i++) {
-    const currentLetter = withoutSpaces[i];
-    outputText += enigmaMachine.encryptLetter(currentLetter);
-  }
-  for (let i = 0; i < outputText.length; i += 30) {
-    outputText = outputText.substring(0, i) + " " + outputText.substring(i);
-  }
-  output.innerHTML = outputText;
-  setAllSettings();
+Encrypt.addEventListener("click", () => {
+  EncryptDecrypt();
+});
+Decrypt.addEventListener("click", () => {
+  EncryptDecrypt();
 });
 //updating the UI and backend on settings change
 rotorIPos.addEventListener("change", (event) => {
@@ -133,7 +125,22 @@ function setAllSettings() {
   rotorIIIPos.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[2]].getPosition();
   rotorIIINotch.value = enigmaMachine.getRotors()[enigmaMachine.getSelectedRotors()[2]].getNotch();
 }
-
+function EncryptDecrypt() {
+  output.innerHTML = "";
+  outputText = "";
+  //getting rid of spaces and making the input uppercase
+  var withoutSpaces = input.value.replace(/\s+/g, "");
+  withoutSpaces = withoutSpaces.toUpperCase();
+  for (let i = 0; i < withoutSpaces.length; i++) {
+    const currentLetter = withoutSpaces[i];
+    outputText += enigmaMachine.encryptLetter(currentLetter);
+  }
+  for (let i = 0; i < outputText.length; i += 30) {
+    outputText = outputText.substring(0, i) + " " + outputText.substring(i);
+  }
+  output.innerHTML = outputText;
+  setAllSettings();
+}
 //SET ROTOR OPTIONS
 var rotorI = document.getElementById("rotorI");
 var rotorII = document.getElementById("rotorII");
