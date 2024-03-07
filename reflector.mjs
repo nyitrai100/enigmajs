@@ -1,12 +1,11 @@
 export class Reflector {
   constructor(wiring) {
     this.wiring = wiring;
+    this.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
   //reflect the letter
   reflect(letter) {
-    const inputIndex = letter.charCodeAt(0) - "A".charCodeAt(0);
-    const reflectedIndex = this.wiring[inputIndex];
-    const reflectedChar = String.fromCharCode(reflectedIndex + "A".charCodeAt(0));
-    return reflectedChar;
+    let index = this.alphabet.indexOf(letter);
+    return this.wiring[index];
   }
 }

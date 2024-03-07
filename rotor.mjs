@@ -4,6 +4,7 @@ export class rotor {
     this.wiring = wiring;
     this.notch = notch;
     this.position = position;
+    this.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
   //rotate the rotor
   rotate() {
@@ -31,16 +32,19 @@ export class rotor {
   }
   //encrypt the letter
   encrypt(letter, isInverse = false) {
-    const inputIndex = letter.charCodeAt(0) - "A".charCodeAt(0);
-
-    // Adjust for rotor position in the original direction
-    const adjustedIndex = (inputIndex - this.position + 26) % 26;
-
-    // Get the output index
-    const outputIndex = isInverse ? this.wiring.indexOf(adjustedIndex) : this.wiring[adjustedIndex];
-
-    // Adjust for rotor position in the inverse direction
-    const encryptedChar = String.fromCharCode(((outputIndex + this.position) % 26) + "A".charCodeAt(0));
-    return encryptedChar;
+    if (!isInverse) {
+      let index = this.alphabet.indexOf(letter);
+      index = (index + this.position) % 26;
+      let newLetter = this.wiring[index];
+      let newIndex = this.alphabet.indexOf(newLetter);
+      newIndex = (newIndex - this.position + 26) % 26;
+      return this.alphabet[newIndex];
+    } else {
+      let index = this.alphabet.indexOf(letter);
+      index = (index + this.position) % 26;
+      let newIndex = this.wiring.indexOf(this.alphabet[index]);
+      let newLetter = this.alphabet[(newIndex - this.position + 26) % 26];
+      return newLetter;
+    }
   }
 }
