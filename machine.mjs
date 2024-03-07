@@ -1,5 +1,6 @@
 import { Enigma } from "./enigma.mjs";
 
+
 const enigmaMachine = new Enigma();
 //Get all HTML elements
 var rotorIPos = document.getElementById("RotorIPos");
